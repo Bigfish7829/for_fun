@@ -32,6 +32,9 @@ def compass_vector_addition(vector1, vector2):
     else:
         sail = 'Jib'
 
+    if result_magnitude == 0:
+        sail = 'Stop tyring to break my code'
+
     return result_angle_deg, result_magnitude, wind_angle_deg, sail
 
 
