@@ -39,7 +39,7 @@ def compass_vector_addition(vector1, vector2):
 
 st.title("Vector Addition with Compass Bearing and Magnitude")
 st.write("Enter the details of wind and course:")
-vector1_angle = st.number_input("Apparent Wind Direction (degrees):", min_value=0, max_value=360, value=0)
+vector1_angle = st.number_input("Apparent Wind Direction - due to tide(degrees):", min_value=0, max_value=360, value=0)
 vector1_magnitude = st.number_input("Apparent Wind Speed (knots):", min_value=0, value=1)
 vector2_angle = st.number_input("Bearing to Mark (degrees):", min_value=0, max_value=360, value=0)
 vector2_magnitude = st.number_input("Boat Speed (knots):", min_value=0, value=1)
@@ -50,7 +50,7 @@ if st.button("Add Vectors"):
 
     result_angle, result_magnitude, wind_angle_deg, sail = compass_vector_addition(vector1, vector2)
 
-    st.write(f"Resultant Wind: {result_angle} degrees, {result_magnitude} knots.")
+    st.write(f"Resultant Wind from tide and boat speed: {result_angle} degrees, {result_magnitude} knots.")
     st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
     st.write(f" Recommended sail: {sail}")
 
