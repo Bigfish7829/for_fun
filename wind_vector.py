@@ -50,6 +50,6 @@ if st.button("Add Vectors"):
 
     result_angle, result_magnitude, wind_angle_deg, sail = compass_vector_addition(vector1, vector2)
 
-    st.write(f"Resultant Wind: {result_angle} degrees, {result_magnitude} knots."
-             f" Wind angle to Course Over Ground: {wind_angle_deg} degrees."
-            f" Use the: {sail}")
+    st.write(f"Resultant Wind: {result_angle} degrees, {result_magnitude} knots.")
+    st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
+    st.write(f" Recommended sail: {sail}")
