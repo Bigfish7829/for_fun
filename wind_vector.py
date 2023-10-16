@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 
+
 def compass_vector_addition(vector1, vector2):
     angle1, magnitude1 = vector1
     angle2, magnitude2 = vector2
@@ -37,6 +38,7 @@ def compass_vector_addition(vector1, vector2):
 
     return result_angle_deg, result_magnitude, wind_angle_deg, sail
 
+
 st.title("Vector Addition with Compass Bearing and Magnitude")
 st.write("Enter the details of wind and course:")
 vector1_angle = st.number_input("Apparent Wind Direction - due to tide(degrees):", min_value=0, max_value=360, value=0)
@@ -53,4 +55,3 @@ if st.button("Add Vectors"):
     st.write(f"Resultant Wind from tide and boat speed: {result_angle} degrees, {result_magnitude} knots.")
     st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
     st.write(f" Recommended sail: {sail}")
-
