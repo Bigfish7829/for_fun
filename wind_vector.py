@@ -27,12 +27,17 @@ def compass_vector_addition(vector1, vector2):
     result_angle_deg = round((result_angle_deg + 360) % 360, 0)
     wind_angle_deg = angle2 - result_angle_deg
 
-    return result_angle_deg, result_magnitude, wind_angle_deg
+    if wind_angle_deg >= 90:
+        sail = 'Spinnaker'
+    else
+        sail = 'Jib'
+
+    return result_angle_deg, result_magnitude, wind_angle_deg, sail
 
 
 st.write("Enter the details of two vectors:")
-vector1_angle = st.number_input("True Wind Direction (degrees):", min_value=0, max_value=360, value=0)
-vector1_magnitude = st.number_input("True Wind Speed (knots):", min_value=0, value=1)
+vector1_angle = st.number_input("Apparent Wind Direction (degrees):", min_value=0, max_value=360, value=0)
+vector1_magnitude = st.number_input("Apparent Wind Speed (knots):", min_value=0, value=1)
 vector2_angle = st.number_input("Bearing to Mark (degrees):", min_value=0, max_value=360, value=0)
 vector2_magnitude = st.number_input("Boat Speed (knots):", min_value=0, value=1)
 
@@ -40,7 +45,8 @@ if st.button("Add Vectors"):
     vector1 = (vector1_angle, vector1_magnitude)
     vector2 = (vector2_angle, vector2_magnitude)
 
-    result_angle, result_magnitude, wind_angle_deg = compass_vector_addition(vector1, vector2)
+    result_angle, result_magnitude, wind_angle_deg, sail = compass_vector_addition(vector1, vector2)
 
-    st.write(f"Resultant Vector: {result_angle} degrees, {result_magnitude} knots."
-             f" Wind angle to boat: {wind_angle_deg} degrees.")
+    st.write(f"Resultant Wind: {result_angle} degrees, {result_magnitude} knots."
+             f" Wind angle to boat: {wind_angle_deg} degrees."
+            f" Use the: {sail}")
