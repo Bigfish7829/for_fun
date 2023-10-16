@@ -26,7 +26,9 @@ def compass_vector_addition(vector1, vector2):
     result_angle_deg = np.degrees(result_angle_rad)
 
     result_angle_deg = round((result_angle_deg + 360) % 360, 0)
-    wind_angle_deg = angle2 - result_angle_deg
+    wind_angle_deg = result_angle_deg - angle2
+    if wind_angle_deg < 0:
+        wind_angle_deg += 360
 
     if wind_angle_deg >= 100 and wind_angle_deg <= 260:
         sail = 'Spinnaker'
