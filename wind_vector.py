@@ -28,7 +28,7 @@ def compass_vector_addition(vector1, vector2):
     result_angle_deg = round((result_angle_deg + 360) % 360, 0)
     wind_angle_deg = angle2 - result_angle_deg
 
-    if wind_angle_deg >= 90:
+    if wind_angle_deg >= 100 and wind_angle_deg <= 260:
         sail = 'Spinnaker'
     else:
         sail = 'Jib'
