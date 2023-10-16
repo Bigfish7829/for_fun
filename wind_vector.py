@@ -53,3 +53,39 @@ if st.button("Add Vectors"):
     st.write(f"Resultant Wind: {result_angle} degrees, {result_magnitude} knots.")
     st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
     st.write(f" Recommended sail: {sail}")
+
+    import streamlit as st
+
+    import plotly.graph_objects as go
+
+    from PIL import Image
+
+    img = Image.open("images/de_ancient.jpg")
+
+    # Create figure
+    fig = go.Figure()
+
+    fig.add_layout_image(
+            dict(
+                source=img,
+                xref="x",
+                yref="y",
+                x=0,
+                y=0,
+                sizex=1024,
+                sizey=1024,
+                visible=True,
+                # sizing="stretch",
+                opacity=1,
+                layer="below")
+    )
+
+
+    # fig.add_trace(go.Scatter(x=[100,100,200,50], y=[100,200,100,50], fill="toself"))
+
+    fig.update_layout(template="plotly_white")
+
+    fig.update_xaxes(showgrid=False, range=(0, 1024))
+    fig.update_yaxes(showgrid=False, scaleanchor='x', range=(1024, 0))
+
+    st.plotly_chart(fig)
