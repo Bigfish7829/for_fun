@@ -5,6 +5,10 @@ def compass_vector_addition(vector1, vector2):
     angle1, magnitude1 = vector1
     angle2, magnitude2 = vector2
 
+    angle2 = angle2 + 180
+    if angle2 > 360:
+        angle2 = angle2 - 360
+
     # Convert compass bearing and magnitude to Cartesian coordinates (x, y)
     angle1_rad = np.radians(angle1)
     angle2_rad = np.radians(angle2)
