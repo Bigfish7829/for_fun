@@ -29,7 +29,7 @@ def compass_vector_addition(vector1, vector2):
 
     if wind_angle_deg >= 90:
         sail = 'Spinnaker'
-    else
+    else:
         sail = 'Jib'
 
     return result_angle_deg, result_magnitude, wind_angle_deg, sail
