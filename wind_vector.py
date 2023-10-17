@@ -41,7 +41,7 @@ def compass_vector_addition(vector1, vector2):
     return result_angle_deg, result_magnitude, wind_angle_deg, sail
 
 
-st.title("Vector Addition with Compass Bearing and Magnitude")
+st.title("Sail selection tool")
 st.write("Enter the details of wind and course:")
 vector1_angle = st.number_input("Apparent Wind Direction - due to tide(degrees):", min_value=0, max_value=360, value=0)
 vector1_magnitude = st.number_input("Apparent Wind Speed (knots):", min_value=0, value=1)
