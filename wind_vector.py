@@ -48,7 +48,8 @@ vector1_magnitude = st.number_input("Apparent Wind Speed (knots):", min_value=0,
 vector2_angle = st.number_input("Bearing to next mark (degrees):", min_value=0, max_value=360, value=0)
 vector2_magnitude = st.number_input("Estimated Boat Speed (knots):", min_value=0, value=1)
 
-if st.button("Add Vectors"):
+if st.button("Select my sail"):
+    st.header("Results")
     vector1 = (vector1_angle, vector1_magnitude)
     vector2 = (vector2_angle, vector2_magnitude)
 
