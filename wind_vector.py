@@ -30,11 +30,6 @@ def compass_vector_addition(apparent_wind, boat_velocity):
     tack = 'Starboard'
     if wind_angle_deg < 0:
         wind_angle_deg += 360
-    elif wind_angle_deg > 360:
-        wind_angle_deg -= 360
-    elif wind_angle_deg > 180:
-        wind_angle_deg = 360 - wind_angle_deg
-        tack = 'Port'
 
     if wind_angle_deg >= 100 and wind_angle_deg <= 260:
         sail = 'Spinnaker'
