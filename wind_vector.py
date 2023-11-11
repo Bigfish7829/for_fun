@@ -97,7 +97,7 @@ if st.button("Select my sail"):
 
     # Plot an arrow at the calculated angle
     ax.annotate("", xy=(result_angle_rad, result_magnitude), xytext=(0, 0),
-                arrowprops=dict(facecolor='red', edgecolor='red', arrowstyle='->', linewidth=2))
+                arrowprops=dict(facecolor='red', edgecolor='red', arrowstyle='<-', linewidth=2))
 
     # Set plot attributes
     ax.set_rlabel_position(0)  # Move radial labels away from plotted line
