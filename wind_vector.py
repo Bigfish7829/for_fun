@@ -23,25 +23,29 @@ def compass_vector_addition(apparent_wind, boat_velocity):
     result_y = y1 + y2
 
     # Convert the result back to compass bearing and magnitude
-    result_magnitude = round(np.sqrt(result_x ** 2 + result_y ** 2), 1)
-    result_angle_rad = np.arctan2(result_y, result_x)
-    result_angle_deg = np.degrees(result_angle_rad)
+    resultant_wind_magnitude = round(np.sqrt(result_x ** 2 + result_y ** 2), 1)
+    resultant_wind_angle_rad = np.arctan2(result_y, result_x)
+    resultant_wind_angle_deg = np.degrees(resultant_wind_angle_rad)
 
-    result_angle_deg = round((result_angle_deg + 360) % 360, 0)
-    wind_angle_deg = result_angle_deg - course_bearing
+    resultant_wind_angle_deg = round((resultant_wind_angle_deg + 360) % 360, 0)
+    wind_angle_to_cog_deg = resultant_wind_angle_deg - course_bearing
     tack = 'Starboard'
-    if wind_angle_deg < 0:
-        wind_angle_deg += 360
+    if wind_angle_to_cog_deg < 0:
+        wind_angle_to_cog_deg += 360
 
-    if wind_angle_deg >= 100 and wind_angle_deg <= 260:
+    if wind_angle_to_cog_deg > 180:
+        tack = 'Port'
+
+
+    if wind_angle_to_cog_deg >= 100 and wind_angle_to_cog_deg <= 260:
         sail = 'Spinnaker'
     else:
         sail = 'Jib'
 
-    if result_magnitude == 0:
+    if resultant_wind_magnitude == 0:
         sail = 'Stop trying to break my code'
 
-    return result_angle_deg, result_magnitude, wind_angle_deg, sail, tack
+    return resultant_wind_angle_deg, resultant_wind_magnitude, wind_angle_to_cog_deg, sail, tack
 
 
 st.title("Sail selection tool")
@@ -69,6 +73,7 @@ if st.button("Select my sail"):
     result_angle, result_magnitude, wind_angle_deg, sail, tack = compass_vector_addition(apparent_wind, boat_velocity)
 
     #st.write(f"Resultant Wind from tide and boat speed: {result_angle} degrees, {result_magnitude} knots.")
+    st.write(f" Course to next mark: {boat_velocity_angle} degrees.")
     st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
     st.write(f" Tack: {tack}")
     st.write(f" Apparent wind speed: {result_magnitude} knots.")
