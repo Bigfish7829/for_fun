@@ -30,6 +30,9 @@ def compass_vector_addition(apparent_wind, boat_velocity):
     resultant_wind_angle_deg = round((resultant_wind_angle_deg + 360) % 360, 0)
     wind_angle_to_cog_deg = resultant_wind_angle_deg - course_bearing
     tack = 'Starboard'
+
+    wind_0_180 = abs(wind_angle_to_cog_deg)
+
     if wind_angle_to_cog_deg < 0:
         wind_angle_to_cog_deg += 360
 
@@ -45,7 +48,7 @@ def compass_vector_addition(apparent_wind, boat_velocity):
     if resultant_wind_magnitude == 0:
         sail = 'Stop trying to break my code'
 
-    return resultant_wind_angle_deg, resultant_wind_magnitude, wind_angle_to_cog_deg, sail, tack
+    return resultant_wind_angle_deg, resultant_wind_magnitude, wind_angle_to_cog_deg, sail, tack, wind_0_180
 
 
 st.title("Sail selection tool")
@@ -70,11 +73,11 @@ if st.button("Select my sail"):
     apparent_wind = (apparent_wind_angle, apparent_wind_magnitude)
     boat_velocity = (boat_velocity_angle, boat_velocity_magnitude)
 
-    result_angle, result_magnitude, wind_angle_deg, sail, tack = compass_vector_addition(apparent_wind, boat_velocity)
+    result_angle, result_magnitude, wind_angle_deg, sail, tack, wind_0_180 = compass_vector_addition(apparent_wind, boat_velocity)
 
     #st.write(f"Resultant Wind from tide and boat speed: {result_angle} degrees, {result_magnitude} knots.")
     st.write(f" Course to next mark: {boat_velocity_angle} degrees.")
     st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
-    st.write(f" Tack: {tack}")
+    st.write(f" Tack: {tack} Angle to wind: {wind_0_180} degrees.")
     st.write(f" Apparent wind speed: {result_magnitude} knots.")
     st.write(f" Recommended sail: {sail}")
