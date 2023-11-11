@@ -39,14 +39,13 @@ def compass_vector_addition(apparent_wind, boat_velocity):
     if wind_angle_to_cog_deg > 180:
         tack = 'Port'
 
+    df_sail_data = pd.read_excel('sail_data.xlsx')
+    df_sail_data = df_sail_data.set_index('AWS')
 
-    if wind_angle_to_cog_deg >= 100 and wind_angle_to_cog_deg <= 260:
-        sail = 'Spinnaker'
-    else:
-        sail = 'Jib'
+    rounded_resultant_wind_magnitude = round(resultant_wind_magnitude/5)*5
+    rounded_wind_0_180 = round(wind_0_180/10)*10
 
-    if resultant_wind_magnitude == 0:
-        sail = 'Stop trying to break my code'
+    sail = df_sail_data.loc[rounded_resultant_wind_magnitude, rounded_wind_0_180]
 
     return resultant_wind_angle_deg, resultant_wind_magnitude, wind_angle_to_cog_deg, sail, tack, wind_0_180
 
