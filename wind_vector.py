@@ -56,7 +56,7 @@ apparent_wind_angle = st.number_input("True Wind Direction:", min_value=0, max_v
 apparent_wind_magnitude = st.number_input("True Wind Speed (knots):", min_value=0, value=10)
 if apparent_wind_magnitude > 25 and apparent_wind_magnitude <= 29:
     st.warning("Wind speed is over 25 knots, are you sure you want to sail?")
-elif apparent_wind_magnitude > 29:
+if apparent_wind_magnitude > 29:
     st.warning("Wind speed is over 30 knots, you should not sail, I will not give you a sail recommendation.")
 
 boat_velocity_magnitude = st.number_input("Estimated Boat Speed SOG(knots):", min_value=0, value=5)
