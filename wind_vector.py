@@ -2,6 +2,8 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import pandas as pd
+import openpyxl
+
 
 
 def compass_vector_addition(apparent_wind, boat_velocity):
