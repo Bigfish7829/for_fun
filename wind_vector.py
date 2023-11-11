@@ -2,6 +2,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
 
 
 def compass_vector_addition(apparent_wind, boat_velocity):
@@ -86,3 +87,21 @@ if st.button("Select my sail"):
     st.write(f" Recommended sail: {sail}")
     st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
+    # Plot resultant_wind_angle on a polar plot
+    fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+    ax.set_theta_direction(-1)  # Set the direction of increasing angles to be clockwise
+    ax.set_theta_offset(np.pi/2.0)  # Set the zero angle to be at the top (North) of the plot
+
+    # Convert the angle to radians for the polar plot
+    result_angle_rad = np.radians(wind_angle_deg)
+
+    # Plot a marker at the calculated angle
+    ax.plot(result_angle_rad, result_magnitude, marker='o', markersize=10, label='Resultant Wind Angle')
+
+    # Set plot attributes
+    ax.set_rlabel_position(0)  # Move radial labels away from plotted line
+    ax.set_rmax(result_magnitude + 5)  # Set the maximum radial value
+    ax.grid(True)
+
+    # Display the polar plot in the Streamlit app
+    st.pyplot(fig)
