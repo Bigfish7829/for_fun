@@ -1,8 +1,14 @@
+import pandas as pd
 import streamlit as st
 import numpy as np
+import pandas as pd
 
 
 def compass_vector_addition(apparent_wind, boat_velocity):
+
+
+
+
     wind_angle, wind_speed = apparent_wind
     course_bearing, boat_speed = boat_velocity
 
@@ -46,8 +52,17 @@ st.title("Sail selection tool")
 st.write("Enter the details of wind and course:")
 apparent_wind_angle = st.number_input("True Wind Direction:", min_value=0, max_value=360, value=0)
 apparent_wind_magnitude = st.number_input("True Wind Speed (knots):", min_value=0, value=10)
-boat_velocity_angle = st.number_input("Bearing to next mark (degrees):", min_value=0, max_value=360, value=0)
+#boat_velocity_angle = st.number_input("Bearing to next mark (degrees):", min_value=0, max_value=360, value=0)
 boat_velocity_magnitude = st.number_input("Estimated Boat Speed SOG(knots):", min_value=0, value=5)
+df_buoys = pd.read_excel('buoys_headings.xlsx')
+
+buoys = df_buoys['Buoys']
+
+starting_buoy = st.selectbox("Starting Buoy", buoys)
+destination_buoy = st.selectbox("Destination Buoy", buoys)
+
+boat_velocity_angle = df_buoys.loc[starting_buoy, destination_buoy].values[0]
+
 
 if st.button("Select my sail"):
     st.header("Results")
