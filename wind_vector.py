@@ -54,6 +54,10 @@ st.title("Sail selection tool")
 st.write("Enter the details of wind and course:")
 apparent_wind_angle = st.number_input("True Wind Direction:", min_value=0, max_value=360, value=0)
 apparent_wind_magnitude = st.number_input("True Wind Speed (knots):", min_value=0, value=10)
+if apparent_wind_magnitude > 25:
+    st.warning("Wind speed is over 25 knots, are you sure you want to sail?")
+elif apparent_wind_magnitude > 30:
+    st.error("Wind speed is over 30 knots, you should not sail.")
 
 boat_velocity_magnitude = st.number_input("Estimated Boat Speed SOG(knots):", min_value=0, value=5)
 df_buoys = pd.read_excel('buoys_headings.xlsx')
@@ -76,7 +80,9 @@ if st.button("Select my sail"):
 
     #st.write(f"Resultant Wind from tide and boat speed: {result_angle} degrees, {result_magnitude} knots.")
     st.write(f" Course to next mark: {boat_velocity_angle} degrees.")
-    st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
-    st.write(f" Tack: {tack} Angle to wind: {wind_0_180} degrees.")
+    st.write(f" Tack: {tack}")
+    st.write(f" Wind angle (Bow is 0): {wind_0_180} degrees.")
     st.write(f" Apparent wind speed: {result_magnitude} knots.")
     st.write(f" Recommended sail: {sail}")
+    st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
+
