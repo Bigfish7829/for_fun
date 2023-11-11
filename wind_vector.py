@@ -57,7 +57,7 @@ buoys = df_buoys['Buoys']
 starting_buoy = st.selectbox("Starting Buoy", buoys)
 destination_buoy = st.selectbox("Destination Buoy", buoys)
 
-boat_velocity_angle = df_buoys.loc[starting_buoy, destination_buoy].values[0]
+boat_velocity_angle = df_buoys.loc[df_buoys[buoys] == starting_buoy, destination_buoy].values[0]
 
 
 if st.button("Select my sail"):
