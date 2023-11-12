@@ -116,7 +116,7 @@ if st.button("Select my sail"):
     st.dataframe(df_sail_data)
 
     # Plot the data
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig_2, ax = plt.subplots(figsize=(10, 6))
 
     for sail in df_sail_data_long['Sail'].unique():
         subset = df_sail_data_long[df_sail_data_long['Sail'] == sail]
@@ -126,4 +126,4 @@ if st.button("Select my sail"):
     ax.set_ylabel('AWS')
     ax.set_title('Sail Selection based on Wind Direction and AWS')
     ax.legend()
-    st.pyplot(fig)
+    st.pyplot(fig_2)
