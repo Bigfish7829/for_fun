@@ -84,8 +84,9 @@ if st.button("Select my sail"):
     st.write(f" Tack: {tack}")
     st.write(f" Wind angle (Bow is 0): {wind_0_180} degrees.")
     st.write(f" Apparent wind speed: {result_magnitude} knots.")
+    st.write(f" Recommended sail: {sail}", style={"font-weight": "bold"})
     st.write(f" Recommended sail: {sail}")
-    st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
+    #st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
     # Plot resultant_wind_angle on a polar plot
     fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
