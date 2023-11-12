@@ -84,7 +84,8 @@ if st.button("Select my sail"):
     st.write(f" Tack: {tack}")
     st.write(f" Wind angle (Bow is 0): {wind_0_180} degrees.")
     st.write(f" Apparent wind speed: {result_magnitude} knots.")
-    st.markdown(f"**Recommended sail:** **{sail}**")
+    st.markdown(f"<p style='font-size:18px'><b>Recommended sail:</b> {sail}</p>", unsafe_allow_html=True)
+
 
     #st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
