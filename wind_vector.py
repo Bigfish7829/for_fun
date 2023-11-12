@@ -106,3 +106,24 @@ if st.button("Select my sail"):
 
     # Display the polar plot in the Streamlit app
     st.pyplot(fig)
+
+    df_sail_data = pd.read_excel('sail_data.xlsx')
+
+    # Convert the DataFrame to a long format for plotting
+    df_sail_data_long = pd.melt(df_sail_data, id_vars='AWS', var_name='Wind Direction', value_name='Sail')
+
+    st.title("Sail Selection")
+    st.dataframe(df_sail_data)
+
+    # Plot the data
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    for sail in df_sail_data_long['Sail'].unique():
+        subset = df_sail_data_long[df_sail_data_long['Sail'] == sail]
+        ax.plot(subset['Wind Direction'], subset['AWS'], label=sail, marker='o', linestyle='-', markersize=8)
+
+    ax.set_xlabel('Wind Direction (degrees)')
+    ax.set_ylabel('AWS')
+    ax.set_title('Sail Selection based on Wind Direction and AWS')
+    ax.legend()
+    st.pyplot(fig)
