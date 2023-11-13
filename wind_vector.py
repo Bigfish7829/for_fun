@@ -105,7 +105,7 @@ if st.button("Select my sail"):
     ax.annotate("AWS, AWA", xy=(result_angle_rad, result_magnitude), xytext=(0, 0),
                 arrowprops=dict(facecolor='red', edgecolor='red', arrowstyle='<-', linewidth=2))
 
-    imagebox = offsetbox.AnnotationBbox(offsetbox.OffsetImage(image, zoom=0.2), (0.5, 0.5),
+    imagebox = offsetbox.AnnotationBbox(offsetbox.OffsetImage(image, zoom=0.3), (0.5, 0.5),
                                         frameon=False, pad=0.5)
     ax.add_artist(imagebox)
 
