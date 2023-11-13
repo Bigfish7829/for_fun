@@ -2,7 +2,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt, offsetbox
+from PIL import Image
 
 
 def compass_vector_addition(apparent_wind, boat_velocity):
@@ -89,6 +90,8 @@ if st.button("Select my sail"):
 
     #st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
+    image = Image.open('boat_2.png')
+
     # Plot resultant_wind_angle on a polar plot
     fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
     ax.set_theta_direction(-1)  # Set the direction of increasing angles to be clockwise
@@ -100,6 +103,10 @@ if st.button("Select my sail"):
     # Plot an arrow at the calculated angle
     ax.annotate("", xy=(result_angle_rad, result_magnitude), xytext=(0, 0),
                 arrowprops=dict(facecolor='red', edgecolor='red', arrowstyle='<-', linewidth=2))
+
+    imagebox = offsetbox.AnnotationBbox(offsetbox.OffsetImage(image, zoom=0.1), (0.5, 0.5),
+                                        frameon=False, pad=0.5)
+    ax.add_artist(imagebox)
 
     # Set plot attributes
     ax.set_rlabel_position(0)  # Move radial labels away from plotted line
