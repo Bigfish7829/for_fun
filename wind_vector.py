@@ -91,6 +91,9 @@ if st.button("Select my sail"):
     #st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
     image = Image.open('boat_2.png')
+    image = image.rotate(-90)
+    image.putalpha(128)
+
 
     # Plot resultant_wind_angle on a polar plot
     fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
