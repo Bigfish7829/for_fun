@@ -107,7 +107,7 @@ if st.button("Select my sail"):
                 arrowprops=dict(facecolor='red', edgecolor='red', arrowstyle='<-', linewidth=2))
 
     imagebox = offsetbox.AnnotationBbox(offsetbox.OffsetImage(image, zoom=0.1), (0.5, 0.5),
-                                        frameon=False, pad=0.5, bboxprops=dict(rotation=90))
+                                        frameon=False, pad=0.5)
     ax.add_artist(imagebox)
 
     # Set plot attributes
