@@ -91,7 +91,6 @@ if st.button("Select my sail"):
     #st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
     image = Image.open('boat_2.png')
-    image = image.rotate(-90)
     image.putalpha(128)
 
 
@@ -108,7 +107,7 @@ if st.button("Select my sail"):
                 arrowprops=dict(facecolor='red', edgecolor='red', arrowstyle='<-', linewidth=2))
 
     imagebox = offsetbox.AnnotationBbox(offsetbox.OffsetImage(image, zoom=0.1), (0.5, 0.5),
-                                        frameon=False, pad=0.5)
+                                        frameon=False, pad=0.5, bboxprops=dict(rotation=90))
     ax.add_artist(imagebox)
 
     # Set plot attributes
