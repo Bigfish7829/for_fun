@@ -65,7 +65,7 @@ boat_velocity_magnitude = st.number_input("Estimated Boat Speed SOG(knots):", mi
 df_buoys = pd.read_excel('buoys_headings.xlsx')
 buoys = df_buoys['Buoys']
 
-starting_buoy = st.selectbox("Starting Buoy", buoys)
+starting_buoy = st.selectbox("Starting Buoy", buoys, value='Mid Cardiff')
 destination_buoy = st.selectbox("Destination Buoy", buoys)
 boat_velocity_angle = df_buoys.loc[df_buoys['Buoys'] == destination_buoy, starting_buoy].values[0]
 
