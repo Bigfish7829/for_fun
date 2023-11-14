@@ -52,7 +52,7 @@ def compass_vector_addition(apparent_wind, boat_velocity):
     return resultant_wind_angle_deg, resultant_wind_magnitude, wind_angle_to_cog_deg, sail, tack, wind_0_180
 
 
-st.title("Sail selection tool")
+st.title("Sail selector")
 st.write("Enter the details of wind and course:")
 apparent_wind_angle = st.number_input("True Wind Direction:", min_value=0, max_value=360, value=0)
 apparent_wind_magnitude = st.number_input("True Wind Speed (knots):", min_value=0, value=10)
