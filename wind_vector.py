@@ -94,6 +94,7 @@ if st.button("Select my sail"):
     #st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
     image = Image.open('boat_3.png')
+    rotated_image = image.rotate(boat_velocity_angle)
 
 
     # Plot resultant_wind_angle on a polar plot
@@ -108,7 +109,7 @@ if st.button("Select my sail"):
     ax.annotate("", xy=(result_angle_rad, result_magnitude), xytext=(0, 0),
                 arrowprops=dict(facecolor='red', edgecolor='red', arrowstyle='<-', linewidth=2))
 
-    imagebox = offsetbox.AnnotationBbox(offsetbox.OffsetImage(image, zoom=0.5), (0.5, 0.5),
+    imagebox = offsetbox.AnnotationBbox(offsetbox.OffsetImage(rotated_image, zoom=0.5), (0.5, 0.5),
                                         frameon=False, pad=0.5)
     ax.add_artist(imagebox)
 
