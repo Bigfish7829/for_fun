@@ -94,7 +94,7 @@ if st.button("Select my sail"):
     #st.write(f" Wind angle to Course Over Ground: {wind_angle_deg} degrees.")
 
     image = Image.open('boat_3.png')
-    rotated_image = image.rotate(boat_velocity_angle)
+    rotated_image = image.rotate(-boat_velocity_angle, expand=True)
 
 
     # Plot resultant_wind_angle on a polar plot
@@ -103,7 +103,7 @@ if st.button("Select my sail"):
     ax.set_theta_offset(np.pi / 2.0)  # Set the zero angle to be at the top (North) of the plot
 
     # Convert the angle to radians for the polar plot
-    result_angle_rad = np.radians(wind_angle_deg)
+    result_angle_rad = np.radians(result_angle)
 
     # Plot an arrow at the calculated angle
     ax.annotate("", xy=(result_angle_rad, result_magnitude), xytext=(0, 0),
