@@ -104,6 +104,9 @@ if st.button("Select my sail"):
 
     # Convert the angle to radians for the polar plot
     result_angle_rad = np.radians(result_angle)
+    # Set the background color to be transparent
+    ax.set_facecolor('none')
+    ax.figure.set_facecolor('none')
 
     # Plot an arrow at the calculated angle
     ax.annotate("", xy=(result_angle_rad, result_magnitude), xytext=(0, 0),
