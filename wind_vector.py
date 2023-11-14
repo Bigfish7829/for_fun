@@ -67,10 +67,10 @@ buoys = df_buoys['Buoys']
 
 starting_buoy = st.selectbox("Starting Buoy", buoys)
 destination_buoy = st.selectbox("Destination Buoy", buoys)
-boat_velocity_angle = df_buoys.loc[df_buoys['Buoys'] == starting_buoy, destination_buoy].values[0]
+boat_velocity_angle = df_buoys.loc[df_buoys['Buoys'] == destination_buoy, starting_buoy].values[0]
 
 image_path = 'map.png'
-st.image(image_path, caption='Buoy Mark', use_column_width=True)
+st.image(image_path, caption='Buoy Map', use_column_width=True)
 
 override = st.checkbox("Override course")
 if override:
